@@ -2,8 +2,8 @@
 Changelog for package clearpath_viz
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.0.1 (2023-07-05)
+------------------
 * Removed global namespace for nav2.rviz
 * Added view_navigation launch file
 * Updated description generator naming

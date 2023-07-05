@@ -2,8 +2,8 @@
 Changelog for package clearpath_config_live
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.0.1 (2023-07-05)
+------------------
 * Updated description generator naming
   Updated robot.rviz
 * Set version to 0.0.0
