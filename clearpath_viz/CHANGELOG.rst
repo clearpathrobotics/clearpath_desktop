@@ -2,6 +2,12 @@
 Changelog for package clearpath_viz
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Added generator to launch
+* Added live config to view_model
+* Contributors: Luis Camero
+
 0.0.1 (2023-07-05)
 ------------------
 * Removed global namespace for nav2.rviz

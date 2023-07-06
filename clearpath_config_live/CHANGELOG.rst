@@ -2,6 +2,12 @@
 Changelog for package clearpath_config_live
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Added python3-watchdog to depends
+* Updated paths
+* Contributors: Luis Camero
+
 0.0.1 (2023-07-05)
 ------------------
 * Updated description generator naming
