@@ -2,8 +2,8 @@
 Changelog for package clearpath_viz
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.0.2 (2023-07-06)
+------------------
 * Added generator to launch
 * Added live config to view_model
 * Contributors: Luis Camero
