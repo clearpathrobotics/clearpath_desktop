@@ -1,5 +1,11 @@
 from launch import LaunchDescription
-from launch.actions import DeclareLaunchArgument, GroupAction, IncludeLaunchDescription
+from launch.actions import (
+    DeclareLaunchArgument,
+    GroupAction,
+    IncludeLaunchDescription,
+    RegisterEventHandler,
+)
+from launch.event_handlers import OnProcessExit
 from launch.substitutions import LaunchConfiguration, PathJoinSubstitution
 
 from launch_ros.actions import Node, PushRosNamespace
@@ -61,14 +67,32 @@ def generate_launch_description():
                 ("joint_states", "platform/joint_states")
             ]
         ),
+
         IncludeLaunchDescription(
             PathJoinSubstitution([
                 pkg_clearpath_platform_description,
                 'launch',
                 'description.launch.py'])
-        )
+        ),
+        Node(
+            package='clearpath_config_live',
+            executable='clearpath_config_live',
+        ),
     ])
 
+    node_generate_description = Node(
+        package='clearpath_generator_common',
+        executable='generate_description',
+        name='generate_description',
+        output='screen',
+    )
+
+    event_generate_description = RegisterEventHandler(
+        event_handler=OnProcessExit(
+            target_action=node_generate_description,
+            on_exit=[group_view_model]
+        )
+    )
 
     ld = LaunchDescription()
     # Args
@@ -77,5 +101,7 @@ def generate_launch_description():
     ld.add_action(arg_rviz_config)
     ld.add_action(arg_use_sim_time)
     # Nodes
-    ld.add_action(group_view_model)
+    ld.add_action(node_generate_description)
+    ld.add_action(event_generate_description)
+
     return ld
