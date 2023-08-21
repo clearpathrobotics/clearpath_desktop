@@ -458,7 +458,7 @@ Visualization Manager:
         Filter size: 10
         History Policy: Keep Last
         Reliability Policy: Best Effort
-        Value: platform/sensors/lidar2d_0/scan
+        Value: sensors/lidar2d_0/scan
       Use Fixed Frame: true
       Use rainbow: true
       Value: true
