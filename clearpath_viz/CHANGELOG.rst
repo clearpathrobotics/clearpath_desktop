@@ -2,6 +2,14 @@
 Changelog for package clearpath_viz
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Update scan topic to match other packages
+* Contributors: Hilary Luo
+
+* Update scan topic to match other packages
+* Contributors: Hilary Luo
+
 0.0.2 (2023-07-06)
 ------------------
 * Added generator to launch
