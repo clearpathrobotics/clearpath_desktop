@@ -14,9 +14,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import getopt
 import rclpy
 import rclpy.logging
 import rclpy.node
+import sys
 
 from clearpath_config_live.clearpath_config_handler import (
     ClearpathConfigHandler
@@ -33,12 +35,12 @@ def main():
     # Node
     rclpy.init()
     node = rclpy.create_node("clearpath_config_live")
-    node.declare_parameter("config_file", "/etc/clearpath/robot.yaml")
+    node.declare_parameter("setup_path", "/etc/clearpath")
     logger = rclpy.logging.get_logger("clearpath_config_live")
 
     # Get File
-    config_param = node.get_parameter("config_file")
-    config_file = config_param.get_parameter_value().string_value
+    setup_path_param = node.get_parameter("setup_path")
+    setup_path = setup_path_param.get_parameter_value().string_value
 
     # Watcher, Handler, and Client
     client = RobotDescriptionClient(
@@ -46,7 +48,7 @@ def main():
         "robot_state_publisher",
         "robot_description"
     )
-    watcher = ClearpathConfigWatcher(config_file, logger)
+    watcher = ClearpathConfigWatcher(setup_path, logger)
     handler = ClearpathConfigHandler(watcher, client, logger)
 
     # Start Handler
