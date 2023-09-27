@@ -13,16 +13,12 @@ from launch_ros.substitutions import FindPackageShare
 
 
 def generate_launch_description():
-    # Launch Configurations
-    platform_model = LaunchConfiguration('platform_model')
-    namespace = LaunchConfiguration('namespace')
-
     # Launch Arguments
-    arg_platform_model = DeclareLaunchArgument(
-        'platform_model',
-        choices=['a200', 'j100'],
-        default_value='a200'
+    arg_setup_path = DeclareLaunchArgument(
+        'setup_path',
+        default_value='/etc/clearpath/'
     )
+
     arg_namespace = DeclareLaunchArgument(
         'namespace',
         default_value='',
@@ -40,26 +36,35 @@ def generate_launch_description():
         default_value='model.rviz',
     )
 
+    # Launch Configurations
+    rviz_config = LaunchConfiguration('config')
+    namespace = LaunchConfiguration('namespace')
+    use_sim_time = LaunchConfiguration('use_sim_time')
+    setup_path = LaunchConfiguration('setup_path')
+
+    # Get Package Paths
     pkg_clearpath_platform_description = FindPackageShare('clearpath_platform_description')
     pkg_clearpath_viz = FindPackageShare('clearpath_viz')
 
     config_rviz = PathJoinSubstitution(
-        [pkg_clearpath_viz, 'rviz', LaunchConfiguration('config')]
+        [pkg_clearpath_viz, 'rviz', rviz_config]
     )
-
 
     group_view_model = GroupAction([
         PushRosNamespace(namespace),
-        Node(package='rviz2',
+        # RViz
+        Node(
+            package='rviz2',
             executable='rviz2',
             name='rviz2',
             arguments=['-d', config_rviz],
-            parameters=[{'use_sim_time': LaunchConfiguration('use_sim_time')}],
+            parameters=[{'use_sim_time': use_sim_time}],
             remappings=[
                ('/tf', 'tf'),
                ('/tf_static', 'tf_static')
             ],
             output='screen'),
+        # Joint State Publisher
         Node(
             package='joint_state_publisher_gui',
             executable='joint_state_publisher_gui',
@@ -67,24 +72,28 @@ def generate_launch_description():
                 ("joint_states", "platform/joint_states")
             ]
         ),
-
+        # Load Robot Description
         IncludeLaunchDescription(
             PathJoinSubstitution([
                 pkg_clearpath_platform_description,
                 'launch',
                 'description.launch.py'])
         ),
+        # Live Updater
         Node(
             package='clearpath_config_live',
             executable='clearpath_config_live',
+            parameters=[{'setup_path': setup_path}]
         ),
     ])
 
+    # Generate Initial Description
     node_generate_description = Node(
         package='clearpath_generator_common',
         executable='generate_description',
         name='generate_description',
         output='screen',
+        arguments=['-s', setup_path],
     )
 
     event_generate_description = RegisterEventHandler(
@@ -96,7 +105,7 @@ def generate_launch_description():
 
     ld = LaunchDescription()
     # Args
-    ld.add_action(arg_platform_model)
+    ld.add_action(arg_setup_path)
     ld.add_action(arg_namespace)
     ld.add_action(arg_rviz_config)
     ld.add_action(arg_use_sim_time)
