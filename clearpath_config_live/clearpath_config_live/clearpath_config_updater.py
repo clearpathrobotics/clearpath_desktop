@@ -14,7 +14,6 @@
 
 import os
 import xacro
-from clearpath_config.common.types.file import File
 from clearpath_generator_common.description.generator import (
     DescriptionGenerator
 )
