@@ -2,6 +2,11 @@
 Changelog for package clearpath_desktop
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Added config live dependency
+* Contributors: Roni Kreinin
+
 0.1.0 (2023-08-25)
 ------------------
 
