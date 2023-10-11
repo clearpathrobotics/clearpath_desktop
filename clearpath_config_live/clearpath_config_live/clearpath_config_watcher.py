@@ -29,21 +29,21 @@ class ClearpathConfigWatcher:
 
     @property
     def watched(self) -> Set[str]:
-        """Get Directories being Watched"""
+        """Get Directories being Watched."""
         return {emitter.watch.path for emitter in self.observer.emitters}
 
     def start(self, event_handler: FileSystemEventHandler) -> None:
-        """Start Tracking Clearpath Config"""
+        """Start Tracking Clearpath Config."""
         self.observer.start()
         self.update(event_handler)
 
     def stop(self) -> None:
-        """Stop Tracking Clearpath Config"""
+        """Stop Tracking Clearpath Config."""
         self.observer.stop()
         self.observer.join()
 
     def update_watched(self, event_handler: FileSystemEventHandler) -> None:
-        """Update Directories being Watched"""
+        """Update Directories being Watched."""
         if self.watched != self.updater.dirs:
             self.observer.unschedule_all()
             for dir in self.updater.dirs:
@@ -53,6 +53,6 @@ class ClearpathConfigWatcher:
                                        recursive=False)
 
     def update(self, event_handler: FileSystemEventHandler) -> None:
-        """Update Clearpath Config and Watchlist"""
+        """Update Clearpath Config and Watchlist."""
         self.updater.update()
         self.update_watched(event_handler)

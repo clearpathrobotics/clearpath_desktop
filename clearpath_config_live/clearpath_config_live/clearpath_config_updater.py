@@ -14,7 +14,6 @@
 
 import os
 import xacro
-from clearpath_config.common.types.file import File
 from clearpath_generator_common.description.generator import (
     DescriptionGenerator
 )
@@ -32,15 +31,15 @@ class ClearpathConfigUpdater:
         self.doc = None
 
     def get_robot_description(self):
-        """Get Robot Description Parameter"""
+        """Get Robot Description Parameter."""
         return self.doc.toprettyxml(indent="  ")
 
     def is_file(self, path: str) -> bool:
-        """Check if File is the Same"""
+        """Check if File is the Same."""
         return os.path.realpath(path) == self.config_file
 
     def update(self) -> None:
-        """Re-load File and Create Description"""
+        """Re-load File and Create Description."""
         # Generate URDF
         dg = DescriptionGenerator(
             setup_path=self.setup_path

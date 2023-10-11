@@ -38,7 +38,7 @@ class ClearpathConfigHandler(FileSystemEventHandler):
         self.logger = logger
 
     def on_modified(self, event):
-        """Check for Updates to Relevant Files in Directory"""
+        """Check for Updates to Relevant Files in Directory."""
         if event.event_type == EVENT_TYPE_MODIFIED and not event.is_directory:
             if self.watcher.updater.is_file(event.src_path):
                 try:

@@ -2,6 +2,9 @@
 Changelog for package clearpath_viz
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.1.1 (2023-10-05)
+------------------
+
 0.1.0 (2023-08-25)
 ------------------
 * Update scan topic to match other packages

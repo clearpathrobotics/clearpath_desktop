@@ -2,6 +2,12 @@
 Changelog for package clearpath_config_live
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.1.1 (2023-10-05)
+------------------
+* [clearpath_config_live] Removed unused import.
+* [clearpath_config_live] Added periods to all comments for pep257.
+* Contributors: Tony Baltovski
+
 0.1.0 (2023-08-25)
 ------------------
 

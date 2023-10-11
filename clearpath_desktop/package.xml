@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package format="3">
   <name>clearpath_desktop</name>
-  <version>0.1.0</version>
+  <version>0.1.1</version>
   <description>Packages for working with Clearpath Platforms from a ROS 2 desktop.</description>
 
   <maintainer email="tbaltovski@clearpathrobotics.com">Tony Baltovski</maintainer>
@@ -10,6 +10,8 @@
   <license>BSD</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <exec_depend>clearpath_config_live</exec_depend>
   <exec_depend>clearpath_platform_msgs</exec_depend>
   <exec_depend>clearpath_viz</exec_depend>
 

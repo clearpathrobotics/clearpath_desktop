@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package format="3">
   <name>clearpath_viz</name>
-  <version>0.1.0</version>
+  <version>0.1.1</version>
   <description>Visualization launchers for Clearpath Platforms.</description>
 
   <maintainer email="tbaltovski@clearpathrobotics.com">Tony Baltovski</maintainer>
@@ -14,6 +14,7 @@
   <exec_depend>clearpath_platform_description</exec_depend>
   <exec_depend>joint_state_publisher_gui</exec_depend>
   <exec_depend>rviz2</exec_depend>
+  <exec_depend>rqt_robot_monitor</exec_depend>
 
   <export>
     <build_type>ament_cmake</build_type>
