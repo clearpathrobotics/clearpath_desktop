@@ -22,9 +22,9 @@ from watchdog.observers import Observer
 
 class ClearpathConfigWatcher:
 
-    def __init__(self, config_file: str, logger) -> None:
+    def __init__(self, setup_path: str, logger) -> None:
         self.observer = Observer()
-        self.updater = ClearpathConfigUpdater(config_file)
+        self.updater = ClearpathConfigUpdater(setup_path)
         self.logger = logger
 
     @property

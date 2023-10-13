@@ -51,33 +51,13 @@ def generate_launch_description():
         description='Robot namespace'
     )
 
-    arg_use_sim_time = DeclareLaunchArgument(
-        'use_sim_time',
-        default_value='false',
-        description='Use simulation (Gazebo) clock if true'
-    )
-
-    arg_rviz_config = DeclareLaunchArgument(
-        name='config',
-        default_value='nav2.rviz',
-    )
-
-    pkg_clearpath_viz = FindPackageShare('clearpath_viz')
-
-    config_rviz = PathJoinSubstitution(
-        [pkg_clearpath_viz, 'rviz', LaunchConfiguration('config')]
-    )
-
     group_view_model = GroupAction([
         PushRosNamespace(namespace),
-        Node(package='rviz2',
-             executable='rviz2',
-             name='rviz2',
-             arguments=['-d', config_rviz],
-             parameters=[{'use_sim_time': LaunchConfiguration('use_sim_time')}],
+        Node(package='rqt_robot_monitor',
+             executable='rqt_robot_monitor',
              remappings=[
-                ('/tf', 'tf'),
-                ('/tf_static', 'tf_static')
+                ('/diagnostics', 'diagnostics'),
+                ('/diagnostics_agg', 'diagnostics_agg')
              ],
              output='screen')
     ])
@@ -85,8 +65,7 @@ def generate_launch_description():
     ld = LaunchDescription()
     # Args
     ld.add_action(arg_namespace)
-    ld.add_action(arg_rviz_config)
-    ld.add_action(arg_use_sim_time)
+
     # Nodes
     ld.add_action(group_view_model)
     return ld
