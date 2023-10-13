@@ -2,8 +2,8 @@
 Changelog for package clearpath_viz
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.1.2 (2023-10-13)
+------------------
 * rqt_robot_monitor dep
 * View diagnostics
   Added license

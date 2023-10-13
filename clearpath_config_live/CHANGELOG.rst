@@ -2,8 +2,8 @@
 Changelog for package clearpath_config_live
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.1.2 (2023-10-13)
+------------------
 * Pass setup path to clearpath_config
 * Contributors: Luis Camero
 
