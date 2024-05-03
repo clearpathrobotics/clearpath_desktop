@@ -90,7 +90,7 @@ def generate_launch_description():
              executable='rviz2',
              name='rviz2',
              arguments=['-d', config_rviz],
-             parameters=[{'use_sim_time': LaunchConfiguration('use_sim_time')}],
+             parameters=[{'use_sim_time': use_sim_time}],
              remappings=[
                ('/tf', 'tf'),
                ('/tf_static', 'tf_static')
