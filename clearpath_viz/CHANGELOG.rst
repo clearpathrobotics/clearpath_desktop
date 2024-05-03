@@ -2,6 +2,14 @@
 Changelog for package clearpath_viz
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.1.2 (2023-10-13)
+------------------
+* rqt_robot_monitor dep
+* View diagnostics
+  Added license
+* Pass setup path to clearpath_config
+* Contributors: Luis Camero, Roni Kreinin
+
 0.1.1 (2023-10-05)
 ------------------
 

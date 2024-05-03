@@ -2,6 +2,9 @@
 Changelog for package clearpath_desktop
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.1.2 (2023-10-13)
+------------------
+
 0.1.1 (2023-10-05)
 ------------------
 * Added config live dependency
