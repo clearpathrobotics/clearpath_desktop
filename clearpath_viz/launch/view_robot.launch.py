@@ -33,17 +33,76 @@
 # of Clearpath Robotics.
 
 from launch import LaunchDescription
-from launch.actions import DeclareLaunchArgument, GroupAction
+from launch.actions import DeclareLaunchArgument, GroupAction, OpaqueFunction
 from launch.substitutions import LaunchConfiguration, PathJoinSubstitution
 
 from launch_ros.actions import Node, PushRosNamespace
 from launch_ros.substitutions import FindPackageShare
 
+MARKER = 'rviz_moveit_motion_planning_display/robot_interaction_interactive_marker_topic/'
 
-def generate_launch_description():
+MOVEIT_TOPICS = [
+    'attached_collision_object',
+    'compute_cartesian_path',
+    'display_planned_path',
+    'get_planner_params',
+    'monitored_planning_scene',
+    'move_action',
+    'query_planner_interface',
+    'set_planner_params',
+    'trajectory_execution_event',
+    MARKER + 'feedback',
+    MARKER + 'get_interactive_markers',
+    MARKER + 'update',
+]
+
+
+def launch_setup(context, *args, **kwargs):
     # Launch Configurations
     namespace = LaunchConfiguration('namespace')
+    use_sim_time = LaunchConfiguration('use_sim_time')
+    rviz_config = LaunchConfiguration('config')
 
+    # RViz Configuration
+    pkg_clearpath_viz = FindPackageShare('clearpath_viz')
+    config_rviz = PathJoinSubstitution(
+        [pkg_clearpath_viz, 'rviz', rviz_config]
+    )
+
+    # Apply Namespace to Rviz Configuration
+    context_namespace = namespace.perform(context)
+
+    # Remappings
+    remappings = [
+        # Standard
+        ('/tf', 'tf'),
+        ('/tf_static', 'tf_static'),
+    ]
+
+    # Remappings for MoveIt!
+    for topic in MOVEIT_TOPICS:
+        # Standard Topics
+        remappings.append(('/%s' % topic, topic))
+        # Doubled Topics
+        remappings.append(('/%s/%s/' % (context_namespace, context_namespace) + topic, topic))
+
+    return [
+        GroupAction([
+            PushRosNamespace(namespace),
+            Node(
+                package='rviz2',
+                executable='rviz2',
+                name='rviz2',
+                arguments=['-d', config_rviz],
+                parameters=[{'use_sim_time': use_sim_time}],
+                remappings=remappings,
+                output='screen'
+            )
+        ])
+    ]
+
+
+def generate_launch_description():
     # Launch Arguments
     arg_namespace = DeclareLaunchArgument(
         'namespace',
@@ -62,32 +121,11 @@ def generate_launch_description():
         default_value='robot.rviz',
     )
 
-    pkg_clearpath_viz = FindPackageShare('clearpath_viz')
-
-    config_rviz = PathJoinSubstitution(
-        [pkg_clearpath_viz, 'rviz', LaunchConfiguration('config')]
-    )
-
-    group_view_model = GroupAction([
-        PushRosNamespace(namespace),
-        Node(package='rviz2',
-             executable='rviz2',
-             name='rviz2',
-             arguments=['-d', config_rviz],
-             parameters=[{'use_sim_time': LaunchConfiguration('use_sim_time')}],
-             remappings=[
-                ('/tf', 'tf'),
-                ('/tf_static', 'tf_static')
-             ],
-             output='screen')
-    ])
-
-
     ld = LaunchDescription()
     # Args
     ld.add_action(arg_namespace)
     ld.add_action(arg_rviz_config)
     ld.add_action(arg_use_sim_time)
     # Nodes
-    ld.add_action(group_view_model)
+    ld.add_action(OpaqueFunction(function=launch_setup))
     return ld
