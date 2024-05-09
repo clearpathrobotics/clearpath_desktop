@@ -36,7 +36,7 @@ Visualization Manager:
       Reference Frame: <Fixed Frame>
       Value: true
     - Class: moveit_rviz_plugin/MotionPlanning
-      Move Group Namespace: /w200_0000
+      Move Group Namespace: ''
       Name: MotionPlanning
       Planned Path:
         Loop Animation: true
@@ -49,6 +49,8 @@ Visualization Manager:
       Scene Robot:
         Robot Alpha: 0.5
       Value: true
+      Acceleration_Scaling_Factor: 0.5
+      Velocity_Scaling_Factor: 0.5
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
