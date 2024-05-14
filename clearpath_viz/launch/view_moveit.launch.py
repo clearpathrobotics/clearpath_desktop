@@ -63,6 +63,7 @@ def launch_setup(context, *args, **kwargs):
     # Launch Configurations
     namespace = LaunchConfiguration('namespace')
     use_sim_time = LaunchConfiguration('use_sim_time')
+    arm_count = LaunchConfiguration('arm_count')
 
     # Apply Namespace to Rviz Configuration
     context_namespace = namespace.perform(context)
@@ -98,6 +99,19 @@ def launch_setup(context, *args, **kwargs):
         # Doubled Topics
         remappings.append(('/%s/%s/' % (context_namespace, context_namespace) + topic, topic))
 
+    # Arm Kinematics
+    parameters = {}
+    parameters['use_sim_time'] = use_sim_time
+    parameters['robot_description_kinematics'] = {}
+    for i in range(int(arm_count.perform(context))):
+        parameters['robot_description_kinematics'].update(
+            {'arm_%s' % i: {
+                'kinematics_solver': 'kdl_kinematics_plugin/KDLKinematicsPlugin',
+                'kinematics_solver_search_resolution': 0.005,
+                'kinematics_solver_timeout': 0.005,
+            }}
+        )
+
     return [
         GroupAction([
             PushRosNamespace(namespace),
@@ -106,7 +120,7 @@ def launch_setup(context, *args, **kwargs):
                 executable='rviz2',
                 name='rviz2',
                 arguments=['-d', namespaced_config],
-                parameters=[{'use_sim_time': use_sim_time}],
+                parameters=[parameters],
                 remappings=remappings,
                 output='screen'
             )
@@ -128,10 +142,17 @@ def generate_launch_description():
         description='Use simulation (Gazebo) clock if true'
     )
 
+    arg_arm_count = DeclareLaunchArgument(
+        'arm_count',
+        default_value='1',
+        description='Number of arms to add kinematics for.'
+    )
+
     ld = LaunchDescription()
     # Args
     ld.add_action(arg_namespace)
     ld.add_action(arg_use_sim_time)
+    ld.add_action(arg_arm_count)
     # Nodes
     ld.add_action(OpaqueFunction(function=launch_setup))
     return ld
