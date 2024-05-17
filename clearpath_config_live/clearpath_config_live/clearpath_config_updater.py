@@ -23,11 +23,13 @@ class ClearpathConfigUpdater:
 
     def __init__(
             self,
-            setup_path: str = '/etc/clearpath',
+            setup_path: str,
+            logger,
             ) -> None:
+        self.logger = logger
         self.setup_path = os.path.realpath(setup_path)
         self.config_file = os.path.join(self.setup_path, 'robot.yaml')
-        self.dirs = {self.setup_path}
+        self.paths = {self.config_file}
         self.doc = None
 
     def get_robot_description(self):
@@ -45,7 +47,6 @@ class ClearpathConfigUpdater:
             setup_path=self.setup_path
         )
         dg.generate()
-
         # Re-load Description
         self.doc = xacro.process_file(
             os.path.join(self.setup_path, "robot.urdf.xacro")

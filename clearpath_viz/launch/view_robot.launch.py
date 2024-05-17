@@ -82,7 +82,6 @@ def generate_launch_description():
              output='screen')
     ])
 
-
     ld = LaunchDescription()
     # Args
     ld.add_action(arg_namespace)
