@@ -14,11 +14,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import getopt
 import rclpy
 import rclpy.logging
 import rclpy.node
-import sys
 
 from clearpath_config_live.clearpath_config_handler import (
     ClearpathConfigHandler

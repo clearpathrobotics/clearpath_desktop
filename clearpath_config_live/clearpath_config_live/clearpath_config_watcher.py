@@ -24,7 +24,7 @@ class ClearpathConfigWatcher:
 
     def __init__(self, setup_path: str, logger) -> None:
         self.observer = Observer()
-        self.updater = ClearpathConfigUpdater(setup_path)
+        self.updater = ClearpathConfigUpdater(setup_path, logger)
         self.logger = logger
 
     @property
@@ -44,13 +44,10 @@ class ClearpathConfigWatcher:
 
     def update_watched(self, event_handler: FileSystemEventHandler) -> None:
         """Update Directories being Watched."""
-        if self.watched != self.updater.dirs:
-            self.observer.unschedule_all()
-            for dir in self.updater.dirs:
-                self.logger.info("Watching directory: %s" % dir)
-                self.observer.schedule(event_handler,
-                                       path=dir,
-                                       recursive=False)
+        self.observer.unschedule_all()
+        for path in self.updater.paths:
+            self.logger.info("Watching directory: %s" % dir)
+            self.observer.schedule(event_handler, path=path, recursive=False)
 
     def update(self, event_handler: FileSystemEventHandler) -> None:
         """Update Clearpath Config and Watchlist."""
