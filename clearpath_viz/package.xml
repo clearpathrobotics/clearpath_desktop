@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package format="3">
   <name>clearpath_viz</name>
-  <version>0.1.2</version>
+  <version>0.3.0</version>
   <description>Visualization launchers for Clearpath Platforms.</description>
 
   <maintainer email="tbaltovski@clearpathrobotics.com">Tony Baltovski</maintainer>
