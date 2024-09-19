@@ -2,6 +2,9 @@
 Changelog for package clearpath_desktop
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+
 0.1.2 (2023-10-13)
 ------------------
 

@@ -2,6 +2,11 @@
 Changelog for package clearpath_config_live
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Watch file directly instead of directory
+* Contributors: Luis Camero
+
 0.1.2 (2023-10-13)
 ------------------
 * Pass setup path to clearpath_config
