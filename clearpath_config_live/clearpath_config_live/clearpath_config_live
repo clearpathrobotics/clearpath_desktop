@@ -32,19 +32,19 @@ from clearpath_config_live.robot_description_client import (
 def main():
     # Node
     rclpy.init()
-    node = rclpy.create_node("clearpath_config_live")
-    node.declare_parameter("setup_path", "/etc/clearpath")
-    logger = rclpy.logging.get_logger("clearpath_config_live")
+    node = rclpy.create_node('clearpath_config_live')
+    node.declare_parameter('setup_path', '/etc/clearpath')
+    logger = rclpy.logging.get_logger('clearpath_config_live')
 
     # Get File
-    setup_path_param = node.get_parameter("setup_path")
+    setup_path_param = node.get_parameter('setup_path')
     setup_path = setup_path_param.get_parameter_value().string_value
 
     # Watcher, Handler, and Client
     client = RobotDescriptionClient(
         node,
-        "robot_state_publisher",
-        "robot_description"
+        'robot_state_publisher',
+        'robot_description'
     )
     watcher = ClearpathConfigWatcher(setup_path, logger)
     handler = ClearpathConfigHandler(watcher, client, logger)
@@ -53,17 +53,17 @@ def main():
     try:
         watcher.start(handler)
     except Exception as ex:
-        logger.error("Live updater failed: \n")
+        logger.error('Live updater failed: \n')
         logger.error(ex.args)
 
     # Spin
     try:
         rclpy.spin(node)
     except KeyboardInterrupt:
-        logger.info("Live updater exited with keyboard interrupt.")
+        logger.info('Live updater exited with keyboard interrupt.')
     finally:
         watcher.stop()
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()
