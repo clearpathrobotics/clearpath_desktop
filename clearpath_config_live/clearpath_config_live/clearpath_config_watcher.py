@@ -12,10 +12,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from typing import Set
+
 from clearpath_config_live.clearpath_config_updater import (
     ClearpathConfigUpdater
 )
-from typing import Set
 from watchdog.events import FileSystemEventHandler
 from watchdog.observers import Observer
 
@@ -46,7 +47,7 @@ class ClearpathConfigWatcher:
         """Update Directories being Watched."""
         self.observer.unschedule_all()
         for path in self.updater.paths:
-            self.logger.info("Watching directory: %s" % dir)
+            self.logger.info('Watching directory: %s' % dir)
             self.observer.schedule(event_handler, path=path, recursive=False)
 
     def update(self, event_handler: FileSystemEventHandler) -> None:
