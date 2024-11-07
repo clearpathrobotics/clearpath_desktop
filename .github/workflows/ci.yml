@@ -36,5 +36,4 @@ jobs:
           package-name: |
             clearpath_config_live
             clearpath_desktop
-            ckearpath_viz
-          vcs-repo-file-url: dependencies.repos
+            clearpath_viz
