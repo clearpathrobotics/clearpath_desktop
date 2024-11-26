@@ -2,6 +2,11 @@
 Changelog for package clearpath_viz
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Added minimum version.
+* Contributors: Tony Baltovski
+
 0.3.0 (2024-09-19)
 ------------------
 * Undo changes to view_robot
