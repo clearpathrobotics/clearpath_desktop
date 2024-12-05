@@ -64,6 +64,8 @@ def launch_setup(context, *args, **kwargs):
     namespace = LaunchConfiguration('namespace')
     use_sim_time = LaunchConfiguration('use_sim_time')
     arm_count = LaunchConfiguration('arm_count')
+    gripper_count = LaunchConfiguration('gripper_count')
+    lift_count = LaunchConfiguration('lift_count')
 
     # Apply Namespace to Rviz Configuration
     context_namespace = namespace.perform(context)
@@ -99,18 +101,42 @@ def launch_setup(context, *args, **kwargs):
         # Doubled Topics
         remappings.append(('/%s/%s/' % (context_namespace, context_namespace) + topic, topic))
 
-    # Arm Kinematics
+    # Kinematics for MoveIt!
+    pkg_clearpath_manipulators = FindPackageShare('clearpath_manipulators')
+    default_arm_kinematics_file = PathJoinSubstitution(
+        [pkg_clearpath_manipulators, 'config', 'kinematics', 'arm.yaml']
+    )
+    default_gripper_kinematics_file = PathJoinSubstitution(
+        [pkg_clearpath_manipulators, 'config', 'kinematics', 'gripper.yaml']
+    )
+    default_lift_kinematics_file = PathJoinSubstitution(
+        [pkg_clearpath_manipulators, 'config', 'kinematics', 'lift.yaml']
+    )
+
+    default_arm_kinematics = read_yaml(
+        default_arm_kinematics_file.perform(context))
+    default_gripper_kinematics = read_yaml(
+        default_gripper_kinematics_file.perform(context))
+    default_lift_kinematics = read_yaml(
+        default_lift_kinematics_file.perform(context))
+
     parameters = {}
     parameters['use_sim_time'] = use_sim_time
     parameters['robot_description_kinematics'] = {}
     for i in range(int(arm_count.perform(context))):
         parameters['robot_description_kinematics'].update(
-            {'arm_%s' % i: {
-                'kinematics_solver': 'kdl_kinematics_plugin/KDLKinematicsPlugin',
-                'kinematics_solver_search_resolution': 0.005,
-                'kinematics_solver_timeout': 0.005,
-            }}
+            {f'arm_{i}': default_arm_kinematics['${name}']}
         )
+    for i in range(int(gripper_count.perform(context))):
+        parameters['robot_description_kinematics'].update(
+            {f'gripper_{i}': default_gripper_kinematics['${name}']}
+        )
+    for i in range(int(lift_count.perform(context))):
+        parameters['robot_description_kinematics'].update(
+            {f'lift_{i}': default_lift_kinematics['${name}']}
+        )
+
+    pprint(parameters)
 
     return [
         GroupAction([
@@ -148,11 +174,25 @@ def generate_launch_description():
         description='Number of arms to add kinematics for.'
     )
 
+    arg_gripper_count = DeclareLaunchArgument(
+        'gripper_count',
+        default_value='1',
+        description='Number of grippers to add kinematics for.'
+    )
+
+    arg_lift_count = DeclareLaunchArgument(
+        'lift_count',
+        default_value='1',
+        description='Number of lifts to add kinematics for.'
+    )
+
     ld = LaunchDescription()
     # Args
     ld.add_action(arg_namespace)
     ld.add_action(arg_use_sim_time)
     ld.add_action(arg_arm_count)
+    ld.add_action(arg_gripper_count)
+    ld.add_action(arg_lift_count)
     # Nodes
     ld.add_action(OpaqueFunction(function=launch_setup))
     return ld
