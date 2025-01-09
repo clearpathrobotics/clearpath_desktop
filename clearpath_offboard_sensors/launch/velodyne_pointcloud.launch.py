@@ -87,7 +87,7 @@ def generate_launch_description():
         remappings=[
           ('/diagnostics', 'diagnostics'),
           ('velodyne_packets', (namespace, '/velodyne_packets')),
-          ('velodyne_points', 'pointcloud'),
+          ('velodyne_points', 'points'),
         ],
     )
 
