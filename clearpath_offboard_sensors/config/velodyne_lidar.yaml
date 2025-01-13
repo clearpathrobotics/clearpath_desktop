@@ -6,5 +6,5 @@
     organize_cloud: true
     view_direction: 0.0
     model: VLP16
-    fixed_frame: velodyne
-    target_frame: velodyne
+    fixed_frame: lidar3d_0_laser
+    target_frame: lidar3d_0_laser
