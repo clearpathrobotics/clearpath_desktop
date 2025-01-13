@@ -1,0 +1,10 @@
+/**:
+  ros__parameters:
+    calibration: /opt/ros/jazzy/share/velodyne_pointcloud/params/VLP16db.yaml
+    max_range: 130.0
+    min_range: 0.9
+    organize_cloud: true
+    view_direction: 0.0
+    model: VLP16
+    fixed_frame: lidar3d_0_laser
+    target_frame: lidar3d_0_laser
