@@ -77,10 +77,16 @@ def launch_setup(context, *args, **kwargs):
     context_rviz = default_config.perform(context)
     content_rviz = read_yaml(context_rviz)
 
-    content_rviz[
-        'Visualization Manager'][
-            'Displays'][1][
-                'Move Group Namespace'] = '/' + context_namespace
+    if context_namespace != '':
+        content_rviz[
+            'Visualization Manager'][
+                'Displays'][1][
+                    'Move Group Namespace'] = '/' + context_namespace
+    else:
+        content_rviz[
+            'Visualization Manager'][
+                'Displays'][1][
+                    'Move Group Namespace'] = ''
 
     namespaced_config = '/tmp/moveit.rviz'
     write_yaml(namespaced_config, content_rviz)
@@ -97,7 +103,8 @@ def launch_setup(context, *args, **kwargs):
         # Standard Topics
         remappings.append(('/%s' % topic, topic))
         # Doubled Topics
-        remappings.append(('/%s/%s/' % (context_namespace, context_namespace) + topic, topic))
+        if context_namespace != '':
+          remappings.append(('/%s/%s/' % (context_namespace, context_namespace) + topic, topic))
 
     # Arm Kinematics
     parameters = {}
