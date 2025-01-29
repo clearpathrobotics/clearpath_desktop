@@ -12,6 +12,7 @@
   <buildtool_depend>ament_cmake</buildtool_depend>
 
   <exec_depend>clearpath_config_live</exec_depend>
+  <exec_depend>clearpath_offboard_sensors</exec_depend>
   <exec_depend>clearpath_platform_msgs</exec_depend>
   <exec_depend>clearpath_viz</exec_depend>
 

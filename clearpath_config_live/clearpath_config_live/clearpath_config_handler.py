@@ -12,16 +12,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from rclpy.task import Future
-from watchdog.events import EVENT_TYPE_MODIFIED
-from watchdog.events import FileSystemEventHandler
-
 from clearpath_config_live.clearpath_config_watcher import (
     ClearpathConfigWatcher
 )
 from clearpath_config_live.robot_description_client import (
     RobotDescriptionClient
 )
+from rclpy.task import Future
+from watchdog.events import EVENT_TYPE_MODIFIED
+from watchdog.events import FileSystemEventHandler
 
 
 class ClearpathConfigHandler(FileSystemEventHandler):
@@ -48,5 +47,5 @@ class ClearpathConfigHandler(FileSystemEventHandler):
                     )
                 except Exception as ex:
                     self.future = Future()
-                    self.logger.error("Updater failed to regenerate config:")
+                    self.logger.error('Updater failed to regenerate config:')
                     self.logger.error(str(ex))
