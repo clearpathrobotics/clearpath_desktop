@@ -2,10 +2,10 @@
 Changelog for package clearpath_config_live
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-0.3.0 (2024-09-19)
-------------------
-* Watch file directly instead of directory
-* Contributors: Luis Camero
+Forthcoming
+-----------
+* Apply linting fixes
+* Contributors: Chris Iverach-Brereton
 
 0.1.2 (2023-10-13)
 ------------------
@@ -20,6 +20,11 @@ Changelog for package clearpath_config_live
 
 0.1.0 (2023-08-25)
 ------------------
+
+0.3.0 (2024-09-19)
+------------------
+* Watch file directly instead of directory
+* Contributors: Luis Camero
 
 0.0.2 (2023-07-06)
 ------------------

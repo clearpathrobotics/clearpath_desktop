@@ -2,14 +2,8 @@
 Changelog for package clearpath_viz
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-0.3.0 (2024-09-19)
-------------------
-* Undo changes to view_robot
-* Added kinematics to RViz parameters
-* Added MoveIt visualization launch file
-* MoveIt rviz config
-* Remappings for moveit
-* Contributors: Luis Camero
+Forthcoming
+-----------
 
 0.1.2 (2023-10-13)
 ------------------
@@ -27,8 +21,14 @@ Changelog for package clearpath_viz
 * Update scan topic to match other packages
 * Contributors: Hilary Luo
 
-* Update scan topic to match other packages
-* Contributors: Hilary Luo
+0.3.0 (2024-09-19)
+------------------
+* Undo changes to view_robot
+* Added kinematics to RViz parameters
+* Added MoveIt visualization launch file
+* MoveIt rviz config
+* Remappings for moveit
+* Contributors: Luis Camero
 
 0.0.2 (2023-07-06)
 ------------------
