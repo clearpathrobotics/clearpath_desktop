@@ -31,7 +31,6 @@
 # Redistribution and use in source and binary forms, with or without
 # modification, is not permitted without the express permission
 # of Clearpath Robotics.
-from pprint import pprint
 from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument, GroupAction, OpaqueFunction
 from launch.substitutions import LaunchConfiguration, PathJoinSubstitution
@@ -135,8 +134,6 @@ def launch_setup(context, *args, **kwargs):
         parameters['robot_description_kinematics'].update(
             {f'lift_{i}': default_lift_kinematics['${name}']}
         )
-
-    pprint(parameters)
 
     return [
         GroupAction([
