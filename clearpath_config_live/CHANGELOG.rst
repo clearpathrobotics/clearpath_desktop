@@ -2,6 +2,9 @@
 Changelog for package clearpath_config_live
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+
 1.0.0 (2024-11-25)
 ------------------
 * Added minimum version.
