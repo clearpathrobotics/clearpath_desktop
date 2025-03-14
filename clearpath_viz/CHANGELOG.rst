@@ -2,8 +2,8 @@
 Changelog for package clearpath_viz
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.2.0 (2025-03-14)
+------------------
 * Feature: MoveIt Kinematics (`#20 <https://github.com/clearpathrobotics/clearpath_desktop/issues/20>`_)
   * Use kinematics file to generate parameters for markers
 * Fix: handle empty namespace (`#19 <https://github.com/clearpathrobotics/clearpath_desktop/issues/19>`_)
