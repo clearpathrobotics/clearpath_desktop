@@ -60,7 +60,10 @@ def generate_launch_description():
             ('in', in_raw),
             ('out/theora', out_theora),
         ],
-        arguments=['raw', 'theora'],
+        parameters=[{
+            'in_transport': 'raw',
+            'out_transport': 'theora',
+        }],
     )
 
     ld = LaunchDescription()

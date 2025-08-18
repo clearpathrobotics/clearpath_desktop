@@ -61,7 +61,10 @@ def generate_launch_description():
             ('in/ffmpeg', in_ffmpeg),
             ('out', out_raw),
         ],
-        arguments=['ffmpeg', 'raw'],
+        parameters=[{
+            'in_transport': 'ffmpeg',
+            'out_transport': 'raw',
+        }],
     )
 
     ld = LaunchDescription()

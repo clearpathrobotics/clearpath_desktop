@@ -60,7 +60,10 @@ def generate_launch_description():
             ('in/compressed', in_compressed),
             ('out', out_raw),
         ],
-        arguments=['compressed', 'raw'],
+        parameters=[{
+            'in_transport': 'compressed',
+            'out_transport': 'raw',
+        }],
     )
 
     ld = LaunchDescription()
