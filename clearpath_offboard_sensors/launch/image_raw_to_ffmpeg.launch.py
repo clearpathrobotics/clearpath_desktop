@@ -59,14 +59,16 @@ def generate_launch_description():
             ('in', in_raw),
             ('out/ffmpeg', out_ffmpeg),
         ],
-        arguments=['raw', 'ffmpeg'],
-        parameters=[
-            {'ffmpeg_image_transport.encoding': LaunchConfiguration('encoding')},
-            {'ffmpeg_image_transport.qmax': LaunchConfiguration('qmax')},
-            {'ffmpeg_image_transport.preset': LaunchConfiguration('preset')},
-            {'ffmpeg_image_transport.tune': LaunchConfiguration('tune')},
-            {'ffmpeg_image_transport.bit_rate': LaunchConfiguration('bit_rate')},
-            {'ffmpeg_image_transport.gop_size': LaunchConfiguration('gop_size')}],
+        parameters=[{
+            'in_transport': 'raw',
+            'out_transport': 'ffmpeg',
+            'ffmpeg_image_transport.encoding': LaunchConfiguration('encoding'),
+            'ffmpeg_image_transport.qmax': LaunchConfiguration('qmax'),
+            'ffmpeg_image_transport.preset': LaunchConfiguration('preset'),
+            'ffmpeg_image_transport.tune': LaunchConfiguration('tune'),
+            'ffmpeg_image_transport.bit_rate': LaunchConfiguration('bit_rate'),
+            'ffmpeg_image_transport.gop_size': LaunchConfiguration('gop_size')
+        }],
     )
 
     ld = LaunchDescription(ARGUMENTS)
