@@ -2,6 +2,9 @@
 Changelog for package clearpath_config_live
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+
 2.0.0 (2025-01-30)
 ------------------
 * Apply linting fixes
