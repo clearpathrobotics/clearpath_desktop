@@ -2,8 +2,8 @@
 Changelog for package clearpath_offboard_sensors
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+2.7.0 (2025-08-25)
+------------------
 * Update republish arguments as parameters for Jazzy (`#23 <https://github.com/clearpathrobotics/clearpath_desktop/issues/23>`_)
 * Contributors: Hilary Luo
 
