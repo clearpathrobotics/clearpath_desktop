@@ -11,8 +11,13 @@
 
   <buildtool_depend>ament_cmake</buildtool_depend>
 
+<<<<<<< HEAD
   <exec_depend version_gte="1.0.0">clearpath_platform_description</exec_depend>
+=======
+  <exec_depend>clearpath_description</exec_depend>
+>>>>>>> af153e3 (Added nav2_rviz_plugins exec dep and changed to clearpath_description to include all meshes. (#29))
   <exec_depend>joint_state_publisher_gui</exec_depend>
+  <exec_depend>nav2_rviz_plugins</exec_depend>
   <exec_depend>rviz2</exec_depend>
   <exec_depend>rqt_robot_monitor</exec_depend>
 
