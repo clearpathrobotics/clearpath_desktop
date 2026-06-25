@@ -11,8 +11,9 @@
 
   <buildtool_depend>ament_cmake</buildtool_depend>
 
-  <exec_depend>clearpath_platform_description</exec_depend>
+  <exec_depend>clearpath_description</exec_depend>
   <exec_depend>joint_state_publisher_gui</exec_depend>
+  <exec_depend>nav2_rviz_plugins</exec_depend>
   <exec_depend>rviz2</exec_depend>
   <exec_depend>rqt_robot_monitor</exec_depend>
 
