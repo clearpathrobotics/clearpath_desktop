@@ -2,8 +2,8 @@
 Changelog for package clearpath_config_live
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.2.1 (2026-06-25)
+------------------
 * [Humble] Changed to rostooling/setup-ros-docker:ubuntu-noble-latest for CI image. (`#28 <https://github.com/clearpathrobotics/clearpath_desktop/issues/28>`_)
   Co-authored-by: Tony Baltovski <tbaltovski@clearpathrobotics.com>
 * Contributors: mergify[bot]

@@ -2,8 +2,8 @@
 Changelog for package clearpath_viz
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.2.1 (2026-06-25)
+------------------
 * [Humble] Added nav2_rviz_plugins exec dep and changed to clearpath_description… (`#30 <https://github.com/clearpathrobotics/clearpath_desktop/issues/30>`_)
   * Added nav2_rviz_plugins exec dep and changed to clearpath_description to include all meshes. (`#29 <https://github.com/clearpathrobotics/clearpath_desktop/issues/29>`_)
   (cherry picked from commit af153e38f69c5f60d8a46feff7c51f667cd31c5d)
