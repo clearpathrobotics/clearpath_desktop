@@ -2,6 +2,18 @@
 Changelog for package clearpath_viz
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* [Humble] Added nav2_rviz_plugins exec dep and changed to clearpath_description… (`#30 <https://github.com/clearpathrobotics/clearpath_desktop/issues/30>`_)
+  * Added nav2_rviz_plugins exec dep and changed to clearpath_description to include all meshes. (`#29 <https://github.com/clearpathrobotics/clearpath_desktop/issues/29>`_)
+  (cherry picked from commit af153e38f69c5f60d8a46feff7c51f667cd31c5d)
+  # Conflicts:
+  #	clearpath_viz/package.xml
+  * Fixed conflicts.
+  ---------
+  Co-authored-by: Tony Baltovski <tbaltovski@clearpathrobotics.com>
+* Contributors: mergify[bot]
+
 1.2.0 (2025-03-14)
 ------------------
 * Feature: MoveIt Kinematics (`#20 <https://github.com/clearpathrobotics/clearpath_desktop/issues/20>`_)
