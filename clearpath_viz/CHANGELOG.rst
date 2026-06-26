@@ -2,6 +2,12 @@
 Changelog for package clearpath_viz
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Added nav2_rviz_plugins exec dep and changed to clearpath_description to include all meshes. (`#29 <https://github.com/clearpathrobotics/clearpath_desktop/issues/29>`_)
+* Update cmake version to 3.20 (`#24 <https://github.com/clearpathrobotics/clearpath_desktop/issues/24>`_)
+* Contributors: Tony Baltovski, luis-camero
+
 2.7.0 (2025-08-25)
 ------------------
 

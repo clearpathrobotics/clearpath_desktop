@@ -2,6 +2,11 @@
 Changelog for package clearpath_offboard_sensors
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Update cmake version to 3.20 (`#24 <https://github.com/clearpathrobotics/clearpath_desktop/issues/24>`_)
+* Contributors: luis-camero
+
 2.7.0 (2025-08-25)
 ------------------
 * Update republish arguments as parameters for Jazzy (`#23 <https://github.com/clearpathrobotics/clearpath_desktop/issues/23>`_)
