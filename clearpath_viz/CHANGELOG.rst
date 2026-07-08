@@ -2,8 +2,8 @@
 Changelog for package clearpath_viz
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+2.9.1 (2026-07-08)
+------------------
 * Added clearpath_common as dep to install all the supported RMWs. (`#31 <https://github.com/clearpathrobotics/clearpath_desktop/issues/31>`_)
 * Contributors: Tony Baltovski
 
