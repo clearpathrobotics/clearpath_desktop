@@ -2,6 +2,9 @@
 Changelog for package clearpath_config_live
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+
 2.9.0 (2026-06-25)
 ------------------
 * Update cmake version to 3.20 (`#24 <https://github.com/clearpathrobotics/clearpath_desktop/issues/24>`_)

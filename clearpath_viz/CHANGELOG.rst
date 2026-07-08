@@ -2,6 +2,11 @@
 Changelog for package clearpath_viz
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Added clearpath_common as dep to install all the supported RMWs. (`#31 <https://github.com/clearpathrobotics/clearpath_desktop/issues/31>`_)
+* Contributors: Tony Baltovski
+
 2.9.0 (2026-06-25)
 ------------------
 * Added nav2_rviz_plugins exec dep and changed to clearpath_description to include all meshes. (`#29 <https://github.com/clearpathrobotics/clearpath_desktop/issues/29>`_)
