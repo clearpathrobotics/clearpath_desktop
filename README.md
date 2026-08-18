@@ -24,7 +24,7 @@ flowchart LR
 ## Packages
 
 | Package | Description |
-|---|---|
+| --- | --- |
 | `clearpath_desktop` | Metapackage aggregating the desktop-side packages. |
 | `clearpath_viz` | RViz visualization launchers for Clearpath platforms. |
 | `clearpath_config_live` | Live URDF updater driven by the Clearpath configuration, so the description on the desktop tracks the robot's current config. |
