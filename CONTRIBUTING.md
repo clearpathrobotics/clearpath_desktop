@@ -67,6 +67,19 @@ colcon test --packages-select <package_name>
 colcon test-result --verbose
 ```
 
+## Continuous integration
+
+[`clearpath_desktop_ci`](.github/workflows/ci.yml) runs on every pull request:
+
+- **jazzy** (`build_and_test`) — builds and tests against the released `testing`/`main` repos.
+- **Jazzy Clearpath Source** (`source_build`) — source build of `clearpath_config_live`,
+  `clearpath_desktop`, and `clearpath_viz`.
+
+Both jobs build against **released** dependencies and do not pull in upstream source branches, so
+they are not affected by in-progress branches in other Clearpath repositories — they should pass on
+their own. If a job fails, the cause is in this repository (or an already-released upstream
+dependency), not an unmerged upstream branch.
+
 ## Submitting a pull request
 
 1. Make sure the workspace builds and any tests pass.
